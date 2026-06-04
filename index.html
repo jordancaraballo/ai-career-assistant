@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Career Assistant</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Career assistant workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Career Intelligence Lab</p>
+            <h1>AI Career Assistant</h1>
+          </div>
+          <div class="status-pill" id="analysisStatus">Ready</div>
+        </header>
+
+        <section class="input-grid">
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Resume</p>
+                <h2>Upload or Paste</h2>
+              </div>
+              <label class="file-button" for="resumeFile">Upload</label>
+              <input id="resumeFile" type="file" accept=".txt,.md,.csv,.pdf" />
+            </div>
+            <textarea id="resumeText" spellcheck="false" placeholder="Paste resume text here, or upload a .txt/.md resume..."></textarea>
+            <div class="sample-row">
+              <button id="loadSampleResume" type="button">Sample Resume</button>
+              <span id="fileMessage" aria-live="polite"></span>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Target Role</p>
+                <h2>Job Description</h2>
+              </div>
+              <button id="loadSampleJob" type="button">Sample JD</button>
+            </div>
+            <textarea id="jobText" spellcheck="false" placeholder="Paste a job description to compare against the resume..."></textarea>
+            <div class="action-row">
+              <button class="primary-action" id="analyzeButton" type="button">Analyze Match</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="results-grid" aria-label="Analysis results">
+          <article class="score-panel">
+            <div>
+              <p class="eyebrow">Fit Score</p>
+              <div class="score" id="fitScore">--</div>
+            </div>
+            <canvas id="skillCanvas" width="420" height="220" aria-label="Skill match chart"></canvas>
+          </article>
+
+          <article class="panel compact">
+            <p class="eyebrow">Skills Found</p>
+            <div id="skillsFound" class="tag-cloud empty">Run an analysis to see extracted skills.</div>
+          </article>
+
+          <article class="panel compact">
+            <p class="eyebrow">Skills to Learn</p>
+            <div id="skillsToLearn" class="recommendation-list empty">Missing skills will appear here.</div>
+          </article>
+
+          <article class="panel compact">
+            <p class="eyebrow">Relevant Jobs</p>
+            <div id="jobMatches" class="job-list empty">Matched job openings will appear here.</div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
